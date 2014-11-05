@@ -22,6 +22,19 @@
 </head>
 
 <body ng-app="myApp">
+<div ng-controller="mainController as mc">
+    <ul>
+        <li ng-repeat="item in mc.data">
+            <input ng-model="item.text" ng-change="mc.data.$save(item)" />
+            <button ng-click="mc.data.$remove(item)">X</button>
+        </li>
+    </ul>
+
+    <form ng-submit="mc.addData(mc.newDataText)">
+        <input ng-model="mc.newDataText" />
+        <button type="submit">add data</button>
+    </form>
+</div>
 
 </body>
 

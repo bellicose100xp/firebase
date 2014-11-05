@@ -5,7 +5,7 @@
 
     angular
         .module('myApp', ['firebase'])
-        .controller(mainController, mainController());
+        .controller('mainController', mainController);
 
     function mainController($firebase) {
 
@@ -15,7 +15,11 @@
 
         var sync = $firebase(ref);
 
-        mc.data = sync.$asObject();
+        mc.data = sync.$asArray();
+
+        mc.addData = function (text) {
+            mc.data.$add({text: text});
+        }
 
 
     }
